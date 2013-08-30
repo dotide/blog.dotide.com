@@ -120,13 +120,13 @@
                    '><\/script>')
     </script>
 
-    <script type="text/javascript">
-      $('a').attr('target','_blank');
-    </script>
-
     <!-- Javascript -->
     <%= javascript_include_tag "application" %>
     <%= yield_content :javascripts %>
+
+    <script type="text/javascript">
+      $('a').attr('target','_blank');
+    </script>
 
     <script>
     $(document).ready(function () {
@@ -145,4 +145,3 @@
 
   </body>
   </html>
-
