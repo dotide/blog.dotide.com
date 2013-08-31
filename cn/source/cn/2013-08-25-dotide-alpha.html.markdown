@@ -3,7 +3,7 @@ title: Dotide 内测进行中!
 date: 2013-08-25
 author: Michael Ding
 tags:
-- 公告
+- announcement公告
 ---
 
 经过长达半年的努力，今天，我们很自豪地宣布，Dotide正式上线了，并开始进入内测环节！
