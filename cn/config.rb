@@ -62,8 +62,6 @@ page "/cn/feed.xml", :layout => false
 ###
 
 # With no layout
-page "robots.txt", :layout => false
-page "humans.txt", :layout => false
 
 # With alternative layout
 # page "/path/to/file.html", :layout => :otherlayout
