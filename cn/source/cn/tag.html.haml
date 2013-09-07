@@ -1,0 +1,20 @@
+---
+pageable: true
+---
+%ul.breadcrumbs
+  %li
+    %a{:href => "/cn/"} 博客首页
+  %li.current
+    %a{:href => tag_path(tagname)}= tagname
+.articles
+  - page_articles.each_with_index do |article, i|
+    - if i > 0
+      %hr/
+    = partial '/cn/article', :locals => {:article => article, :digest => true}
+= partial '/cn/pagination', :locals => { |
+    :paginate => paginate,               |
+    :next_page => next_page,             |
+    :prev_page => prev_page,             |
+    :num_pages => num_pages,             |
+    :page_number => page_number          |
+  }                                      |

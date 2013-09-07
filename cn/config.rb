@@ -79,6 +79,8 @@ page "/cn/feed.xml", :layout => false
 ###
 # Helpers
 ###
+require "extensions/links_helpers"
+helpers LinksHelpers
 
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
