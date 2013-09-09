@@ -13,6 +13,4 @@ tags:
 
 如果你也认同，那还犹豫什么？给我们发邮件吧:-D
 
-READMORE
-
 <script src="https://gist.github.com/yandy/6447170.js"></script>

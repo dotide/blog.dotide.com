@@ -99,8 +99,6 @@
     = javascript_include_tag "application"
     = yield_content :javascripts
     :javascript
-      $('a').attr('target','_blank');
-    :javascript
       $(document).ready(function () {
         #{yield_content :onready}
         $(document).foundation();
