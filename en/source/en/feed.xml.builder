@@ -3,10 +3,10 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   xml.title "Dotide Blog"
   xml.subtitle "the Official Blog of Dotide"
   xml.id "http://blog.dotide.com/"
-  xml.link "href" => "http://blog.dotide.com/"
-  xml.link "href" => "http://blog.dotide.com/feed.xml", "rel" => "self"
+  xml.link "href" => "http://blog.dotide.com/en/"
+  xml.link "href" => "http://blog.dotide.com/en/feed.xml", "rel" => "self"
   xml.updated blog.articles.first.date.to_time.iso8601
-  xml.author { xml.name "Blog Author" }
+  xml.author { xml.name "Dotide" }
 
   blog.articles[0..5].each do |article|
     xml.entry do

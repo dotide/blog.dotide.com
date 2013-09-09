@@ -3,8 +3,8 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   xml.title "Dotide博客"
   xml.subtitle "Dotide官方博客"
   xml.id "http://blog.dotide.com/"
-  xml.link "href" => "http://blog.dotide.com/"
-  xml.link "href" => "http://blog.dotide.com/feed.xml", "rel" => "self"
+  xml.link "href" => "http://blog.dotide.com/cn/"
+  xml.link "href" => "http://blog.dotide.com/cn/feed.xml", "rel" => "self"
   xml.updated blog.articles.first.date.to_time.iso8601
   xml.author { xml.name "Dotide" }
 

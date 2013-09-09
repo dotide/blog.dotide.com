@@ -123,7 +123,13 @@ aside {
     }
   }
 
-  ul.tags li {
+  border-left: solid 1px #dde5e9;
+}
+
+
+ul.tags {
+  list-style: none;
+  li {
     display: inline;
   }
 }
@@ -135,4 +141,18 @@ aside {
   h1 {
     font-size: 30px;
   }
+}
+
+.title-area{
+  .name {
+    h1{
+      img {
+        width: 35px;
+      }
+    }
+  }
+}
+
+footer {
+  border-top: solid 2px #dde5e9;
 }

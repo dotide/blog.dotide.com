@@ -1,0 +1,23 @@
+---
+pageable: true
+---
+- content_for :head do
+  %link{:href => "/en/feed.xml", :rel => "alternate", :type => "application/atom+xml"}/
+.articles.small-12.large-9.columns.left
+  - page_articles.each_with_index do |article, i|
+    - if i > 0
+      %hr/
+    = partial '/en/article', :locals => {:article => article, :digest => true}
+%aside.aside.small-12.large-3.columns.right
+  %h3 标签
+  %ul.tags
+    - blog.tags.each do |tag, articles|
+      %li= link_to tag ,tag_path(tag), :class => 'tiny button secondary round'
+
+= partial '/en/pagination', :locals => { |
+    :paginate => paginate,               |
+    :next_page => next_page,             |
+    :prev_page => prev_page,             |
+    :num_pages => num_pages,             |
+    :page_number => page_number          |
+  }                                      |
