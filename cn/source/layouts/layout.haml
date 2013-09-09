@@ -38,13 +38,16 @@
         %ul
           %li.divider
           %li= link_to '关于我们', '/cn/2013/08/25/aboutus.html'
+        %ul
+          %li.divider
+          %li= link_to '本站源代码', 'https://github.com/dotide/blog.dotide.com'
 
     / Main page container
     .row
       .small-12.columns
         = yield
     / Footer
-    %footer.row
+    %footer.footer.row
       .small-12.large-6.columns
         %p
           \&copy; Copyright #{Date.today.year.to_s} Dotide官方博客
