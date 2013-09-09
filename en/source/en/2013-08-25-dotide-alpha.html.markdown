@@ -1,17 +1,15 @@
 ---
-title: Dotide 内测进行中!
+title: We announce that Dotide(alpha) is availible online, today!
 date: 2013-08-25
 author: Michael Ding
 tags:
-- announcement公告
+- announcement
 ---
 
-经过长达半年的努力，今天，我们很自豪地宣布，Dotide正式上线了，并开始进入内测环节！
+After mounths of design and development, today we announce that Dotide(alpha) is availible online finally!
 
-Dotide是一个专注于物联网的"PaaS"云平台，更多细节请参考 [Dotide首页](http://dotide.com)。
+Dotide is a Platform as a Service specifically built for the Internet of Things. You may know more about Dotide on its [webiste](http://dotide.com).
 
-然而，我们相信广泛听取用户意见才能为用户带来更好的体验！内测意味着我们仅仅完成了一个产品的Demo，还有太多需要完善和修改的地方，我们热切的期望天使用户能够在内测阶段对我们提出宝贵的意见，对于这部分用户，我们也非常愿意送上精美的纪念品以示感谢！
-
+We really appreciate your interest on Dotide. If you'd like to become one of our users and help us to test our service, please email us.
 READMORE
-
-Dotide内测将持续到今年年底，您愿意成为我们的天使吗:-)
+Many thanks!
