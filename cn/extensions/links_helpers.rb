@@ -3,6 +3,6 @@ module LinksHelpers
     year_link = "<a href='/cn/#{date.year}.html'>#{date.year}</a>"
     month_link = "<a href='/cn/#{date.year}/%02d.html'>#{date.mon}</a>" % date.mon
     day_link = "<a href='/cn/#{date.year}/%02d/%02d.html'>#{date.mday}</a>" % [date.mon, date.mday]
-    return "#{year_link}-#{month_link}-#{day_link}"
+    return "#{year_link}/#{month_link}/#{day_link}"
   end
 end
