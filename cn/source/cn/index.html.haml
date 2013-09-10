@@ -12,7 +12,7 @@ pageable: true
   %h3 标签
   %ul.tags
     - blog.tags.each do |tag, articles|
-      %li= link_to tag ,tag_path(tag), :class => 'tiny button secondary round'
+      %li= link_to tag, tag_path(tag), :class => 'tiny button secondary round'
 
 = partial '/cn/pagination', :locals => { |
     :paginate => paginate,               |

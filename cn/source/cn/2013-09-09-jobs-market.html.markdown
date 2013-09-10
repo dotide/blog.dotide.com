@@ -3,7 +3,7 @@ title: 事业部招贤纳士
 date: 2013-09-09
 author: Michael Ding
 tags:
-- jobs工作
+- 工作jobs
 ---
 
 南京自由风暴网络科技有限公司成立于2012年9月，是一家年轻的网络科技有限公司。
