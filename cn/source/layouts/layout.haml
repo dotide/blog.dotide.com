@@ -17,7 +17,10 @@
   %meta{:content => "black-translucent", :name => "apple-mobile-web-app-status-bar-style"}/
   %meta{:content => "on", "http-equiv" => "cleartype"}/
   %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
-  %title= data.page.title || "Dotide Official Blog"
+  - if content_for? :title
+    %title= yield_content :title
+  - else
+    %title= data.page.title || "Dotide官方博客"
   %link{:href => "//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}/
   = stylesheet_link_tag "application"
   = yield_content :stylesheets
