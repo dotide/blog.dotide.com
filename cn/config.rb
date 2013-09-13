@@ -1,7 +1,6 @@
 require 'kramdown'
 require 'extensions/sitemap.rb'
 require 'zurb-foundation'
-require "middleman-smusher"
 
 activate :sprockets
 
@@ -130,6 +129,7 @@ configure :build do
 
   # Compress PNGs after build
   # First: gem install middleman-smusher
+  require "middleman-smusher"
   activate :smusher
 
   # Or use a different image path
