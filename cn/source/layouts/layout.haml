@@ -62,48 +62,30 @@
         %i.icon-heart
         = link_to '托管于又拍云', 'https://www.upyun.com/?md=geakit'
   /[if lt IE 9]
-    <div id="ie-warning-overlay">
-    <div id="ie-warning">
-    <h1>您还在使用化石时代的IE浏览器吗？</h1>
-    <p>
-    为了获得最好的上网体验，我们建议您升级您的IE浏览器或者使用其他浏览器。
-    您可以安装如下任何一款浏览器，来获得更佳的上网体验。
-    </p>
-    <p>点击以下任何一个图标，即可跳转到相应的下载页面.</p>
-    <ul>
-    <li>
-    <a href="http://microsoft.com/ie">
-    <haml:loud> image_tag &amp;#39;browser_ie.png&amp;#39;, :alt =&amp;gt; &amp;quot;下载 Internet Explorer&amp;quot; </haml:loud>
-    <p>Internet Explorer 9+</p>
-    </a>
-    </li>
-    <li>
-    <a href="http://mozilla.org/firefox">
-    <haml:loud> image_tag &amp;#39;browser_firefox.png&amp;#39;, :alt =&amp;gt; &amp;quot;下载 Firefox&amp;quot; </haml:loud>
-    <p>Firefox</p>
-    </a>
-    </li>
-    <li>
-    <a href="http://google.com/chrome">
-    <haml:loud> image_tag &amp;#39;browser_chrome.png&amp;#39;, :alt =&amp;gt; &amp;quot;下载 Chrome&amp;quot; </haml:loud>
-    <p>Google Chrome</p>
-    </a>
-    </li>
-    <li>
-    <a href="http://apple.com/safari">
-    <haml:loud> image_tag &amp;#39;browser_safari.png&amp;#39;, :alt =&amp;gt; &amp;quot;下载 Safari&amp;quot; </haml:loud>
-    <p>Safari</p>
-    </a>
-    </li>
-    <li>
-    <a href="http://opera.com">
-    <haml:loud> image_tag &amp;#39;browser_opera.png&amp;#39;, :alt =&amp;gt; &amp;quot;下载 Opera&amp;quot; </haml:loud>
-    <p>Opera</p>
-    </a>
-    </li>
-    </ul>
-    </div>
-    </div>
+    #ie-warning-overlay
+      #ie-warning
+        %h1 您还在使用化石时代的IE浏览器吗？
+        %p
+          为了获得最好的上网体验，我们建议您升级您的IE浏览器或者使用其他浏览器。
+          您可以安装如下任何一款浏览器，来获得更佳的上网体验。
+        %p 点击以下任何一个图标，即可跳转到相应的下载页面.
+        %ul
+          %li
+            %a{href: 'http://microsoft.com/ie'}
+              = image_tag 'browser_ie.png', :alt => "下载 Internet Explorer"
+              %p Internet Explorer 9+
+          %li
+            %a{href: 'http://mozilla.org/firefox'}
+              = image_tag 'browser_firefox.png', :alt => "下载 Firefox"
+              %p Firefox
+          %li
+            %a{href: 'http://google.com/chrome'}
+              = image_tag 'browser_chrome.png', :alt => "下载 Chrome"
+              %p Google Chrome
+          %li
+            %a{href: 'http://apple.com/safari'}
+              = image_tag 'browser_opera.png', :alt => "下载 Opera"
+              %p Opera
   :javascript
     document.write('<script src=' +
                    ('__proto__' in {} ? "#{asset_path :js, 'zepto'}" : "#{asset_path :js, 'jquery'}") +

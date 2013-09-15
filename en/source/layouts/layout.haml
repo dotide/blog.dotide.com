@@ -62,49 +62,35 @@
         %i.icon-heart
         = link_to 'hosted on Upyun.', 'https://www.upyun.com/?md=geakit'
   /[if lt IE 9]
-    <div id="ie-warning-overlay">
-    <div id="ie-warning">
-    <h1>Did you know that your copy of Internet Explorer is terribly out of date?</h1>
-    <p>
-    To get the best possible experience using our website, we recommend that you upgrade to the latest version or use another web browser.
-    Any of the following will provide a superior experience, not only on this site, but across the web.
-    </p>
-    <p>Just click one of the icons below to get to the download page.</p>
-    <ul>
-    <li>
-    <a href="http://microsoft.com/ie">
-    <haml:loud> image_tag 'browser_ie.png', :alt =&amp;gt; &amp;quot;Download Internet Explorer&amp;quot; </haml:loud>
-    <p>Internet Explorer 9+</p>
-    </a>
-    </li>
-    <li>
-    <a href="http://mozilla.org/firefox">
-    <haml:loud> image_tag 'browser_firefox.png', :alt =&amp;gt; &amp;quot;Download Firefox&amp;quot; </haml:loud>
-    <p>Firefox</p>
-    </a>
-    </li>
-    <li>
-    <a href="http://google.com/chrome">
-    <haml:loud> image_tag 'browser_chrome.png', :alt =&amp;gt; &amp;quot;Download Chrome&amp;quot; </haml:loud>
-    <p>Google Chrome</p>
-    </a>
-    </li>
-    <li>
-    <a href="http://apple.com/safari">
-    <haml:loud> image_tag 'browser_safari.png', :alt =&amp;gt; &amp;quot;Download Safari&amp;quot; </haml:loud>
-    <p>Safari</p>
-    </a>
-    </li>
-    <li>
-    <a href="http://opera.com">
-    <haml:loud> image_tag 'browser_opera.png', :alt =&amp;gt; &amp;quot;Download Opera&amp;quot; </haml:loud>
-    <p>Opera</p>
-    </a>
-    </li>
-    </ul>
-    </div>
-    </div>
-
+    #ie-warning-overlay
+      #ie-warning
+        %h1 Did you know that your copy of Internet Explorer is terribly out of date?
+        %p
+          To get the best possible experience using our website, we recommend that you upgrade to the latest version or use another web browser.
+          Any of the following will provide a superior experience, not only on this site, but across the web.
+        %p
+          Just click one of the icons below to get to the download page.
+        %ul
+          %li
+            %a{href: 'http://microsoft.com/ie'}
+              = image_tag 'browser_ie.png', :alt => "Download Internet Explorer"
+              %p Internet Explorer 9+
+          %li
+            %a{href: 'http://mozilla.org/firefox'}
+              = image_tag 'browser_firefox.png', :alt => "Download Firefox"
+              %p Firefox
+          %li
+            %a{href: 'http://google.com/chrome'}
+              = image_tag 'browser_chrome.png', :alt => "Download Chrome"
+              %p Google Chrome
+          %li
+            %a{href: 'http://apple.com/safari'}
+              = image_tag 'browser_safari.png', :alt => "Download Safari"
+              %p Safari
+          %li
+            %a{href: 'http://opera.com'}
+              = image_tag 'browser_opera.png', :alt => "Download Opera"
+              %p Opera
   :javascript
     document.write('<script src=' +
                    ('__proto__' in {} ? "#{asset_path :js, 'zepto'}" : "#{asset_path :js, 'jquery'}") +
