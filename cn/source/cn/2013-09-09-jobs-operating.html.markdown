@@ -1,7 +1,7 @@
 ---
 title: 行政运营部招贤纳士
 date: 2013-09-09
-author: Michael Ding
+author: Emily Lynn
 tags:
 - 工作jobs
 ---
