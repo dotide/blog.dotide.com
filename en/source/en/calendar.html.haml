@@ -10,6 +10,13 @@ pageable: true
     - if i > 0
       %hr/
     = partial '/en/article', :locals => {:article => article, :digest => true}
+  = partial '/en/pagination', :locals => { |
+      :paginate => paginate,               |
+      :next_page => next_page,             |
+      :prev_page => prev_page,             |
+      :num_pages => num_pages,             |
+      :page_number => page_number          |
+    }                                      |
 %aside.aside.small-12.large-3.columns.right
   %h3
     - case page_type
@@ -19,10 +26,3 @@ pageable: true
       = Date.new(year, month, 1).strftime('%Y-%m')
     - when 'year'
       = year
-= partial '/en/pagination', :locals => { |
-    :paginate => paginate,               |
-    :next_page => next_page,             |
-    :prev_page => prev_page,             |
-    :num_pages => num_pages,             |
-    :page_number => page_number          |
-  }                                      |
