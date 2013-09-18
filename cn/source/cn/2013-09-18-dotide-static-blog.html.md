@@ -1,5 +1,5 @@
 ---
-title: Dotide的纯静态博客搭建
+title: Dotide的纯静态官方博客是如何构建的?
 date: 2013-09-18
 author: Michael Ding
 tags:
@@ -19,4 +19,4 @@ tags:
 又拍云提供第三方域名的绑定。这样，只要我们的域名在国内备案，就可以通过CNAME的设置，将二级域名映射到又拍云的CDN上。
 而CDN本身的诸多访问优势则让我们的服务更加优质。
 
-Dotide博客是开放源代码的，所有源码均托管在[Github](https://github.com/dotide/blog.dotide.com)
+Dotide博客是开放源代码的，所有源码均托管在[Github](https://github.com/dotide/blog.dotide.com)。
