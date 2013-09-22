@@ -23,7 +23,9 @@ gzip_buffers     16 8k;
 gzip_types       text/plain text/css text/javascript application/javascript application/xml;
 ```
 
-为了使不同地区的用户都能获得最佳的访问速度，我们使用了[七牛云存储]的[镜像存储]功能进行加速。该功能对开发者极为友好，不需要写同步脚本或者ftp上传(想主动上传也可以用[qrsync])，只需要在七牛后台配置一下源站。并在rails的配置文件中设置一下`config.action_controller.asset_host = "http://dotide-cdn.qiniudn.com"`即可。之后所有的静态资源都会通过七牛的服务器进行分发，大大减轻了我们主站服务器的压力，节约了带宽。
+为了使不同地区的用户都能获得最佳的访问速度，我们使用了**[七牛云存储]**的**[镜像存储]**功能进行加速。
+
+该功能对开发者极为友好，不需要写同步脚本或者ftp上传(想主动上传也可以用[qrsync])，只需要在七牛后台配置一下源站。并在rails的配置文件中设置一下`config.action_controller.asset_host = "http://dotide-cdn.qiniudn.com"`即可。之后所有的静态资源都会通过七牛的服务器进行分发，大大减轻了我们主站服务器的压力，节约了带宽。
 
 总结一下，三个要点：
 
