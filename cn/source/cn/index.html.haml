@@ -28,6 +28,10 @@ pageable: true
   .divider
   %ul.no-bullet.media
     %li
+      = link_to '/cn/feed.xml' do
+        %i.icon-rss
+        = "订阅本博客"
+    %li
       = link_to 'http://weibo.com/dotide' do
         %i.icon-weibo
         = "@Dotide"
