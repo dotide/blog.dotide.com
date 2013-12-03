@@ -21,7 +21,6 @@
     %title= yield_content :title
   - else
     %title= data.page.title || "Dotide Official Blog"
-  %link{:href => "//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}/
   = stylesheet_link_tag "application"
   = yield_content :stylesheets
   - if content_for? :styles
