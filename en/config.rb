@@ -1,4 +1,3 @@
-require 'kramdown'
 require 'extensions/sitemap.rb'
 require 'zurb-foundation'
 
