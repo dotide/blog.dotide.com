@@ -1,9 +1,0 @@
----
-title: About Us
-date: 2013-08-25
-author: Michael Ding
-tags:
-- team
----
-
-Coming soon!
