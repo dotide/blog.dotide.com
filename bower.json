@@ -1,0 +1,8 @@
+{
+  "name": "developer.dotide.com",
+  "version": "0.0.1",
+  "dependencies": {
+    "foundation": "~5.2.1"
+  },
+  "private": true
+}

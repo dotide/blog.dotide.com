@@ -1,15 +1,17 @@
-source 'http://ruby.taobao.org/'
+# If you have OpenSSL installed, we recommend updating
+# the following line to use "https"
+# source 'https://rubygems.org'
+source 'https://ruby.taobao.org/'
 
-gem "middleman", "~> 3.1.0"
+# middleman
+gem "middleman", "~> 3.2.2"
 gem "middleman-blog", "~> 3.2.0"
 gem "middleman-syntax"
-gem "middleman-deploy"
-gem "middleman-smusher"
+gem "middleman-livereload", "~> 3.1.0"
 
-gem "builder", "~> 3.0.0"
-gem "zurb-foundation" , '~> 4.2.2', require: false
-gem "forgery"
+# plugin
 gem "sitemap_generator"
-gem "tzinfo"
-gem "nokogiri"
 gem "redcarpet"
+
+# pages
+gem 'font-awesome-sass'
