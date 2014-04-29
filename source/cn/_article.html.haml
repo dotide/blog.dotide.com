@@ -10,7 +10,7 @@
       = date_links article.date
     %ul.tags
       - article.tags.each do |tag|
-        %li= link_to tag ,tag_path(tag), :class => 'tiny button secondary round'
+        %li= link_to tag ,tag_path(tag, 'cn'), :class => 'tiny button secondary round'
     .clear
   - if digest
     = article.summary
@@ -19,7 +19,7 @@
 
   - if digest && article.summary.length < article.body.length
     %p.readmore
-      = link_to '更多 &rarr;', article.url, :class => 'secondary button radius'
+      = link_to '&rarr;', article.url, :class => 'secondary button radius'
 
   - unless digest
     %ul.read_next

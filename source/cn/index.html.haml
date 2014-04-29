@@ -1,4 +1,5 @@
 ---
+layout: cn
 pageable: true
 ---
 - content_for :head do
@@ -8,7 +9,7 @@ pageable: true
   = "Dotide官方博客"
 
 .articles.small-12.large-9.columns.left
-  - page_articles.each_with_index do |article, i|
+  - page_articles('cn').each_with_index do |article, i|
     - if i > 0
       %hr/
     = partial '/cn/article', :locals => {:article => article, :digest => true}
@@ -23,8 +24,8 @@ pageable: true
 %aside.aside.small-12.large-3.columns.right
   %h3 标签
   %ul.tags
-    - blog.tags.each do |tag, articles|
-      %li= link_to tag, tag_path(tag), :class => 'tiny button secondary round'
+    - blog('cn').tags.each do |tag, articles|
+      %li= link_to tag, tag_path(tag, 'cn'), :class => 'tiny button secondary round'
   .divider
   %ul.no-bullet.media
     %li

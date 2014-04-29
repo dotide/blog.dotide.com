@@ -1,17 +1,13 @@
-require 'extensions/sitemap.rb'
-require 'zurb-foundation'
+require 'extensions/sitemap'
+require 'lib/links_helpers'
 
 activate :sprockets
-
-# Unfortunately ZURB puts its assets in unconventional paths, so we need to
-# manually add these paths for sprockets to find them. However, the following
-# only works within the middleman server but there doesn't seem to be any
-# way to get sprockets to export the vendored assets within the foundation
-# gem to the build directory because of the non-standard naming of the directories.
-# Keeping this here for reference though.
-#Gem.loaded_specs.values.map(&:full_gem_path).each do |root_path|
-#  ["js", "scss"].map {|p| File.join(root_path, p) }.select {|p| File.directory?(p) }.each {|p| sprockets.append_path(p)}
-#end
+after_configuration do
+  sprockets.append_path(File.join(root, 'vendor/assets/javascripts'))
+  sprockets.append_path(File.join(root, 'vendor/assets/stylesheets'))
+  sprockets.append_path(File.join(root, 'vendor/assets/components'))
+  sprockets.import_asset('modernizr')
+end
 
 ###
 ## Blog settings
@@ -19,28 +15,34 @@ activate :sprockets
 
 Time.zone = "Asia/Shanghai"
 
+# CN Lang
+
 activate :blog do |blog|
-  blog.prefix = "/cn"
-  blog.permalink = ":year/:month/:day/:title.html"
-  blog.sources = ":year-:month-:day-:title.html"
-  blog.taglink = "tags/:tag.html"
-  blog.layout = "article"
+  blog.name = 'cn'
+  blog.prefix = 'cn'
+
+  blog.permalink = '{year}/{month}/{day}/{title}.html'
+  blog.sources = '{year}-{month}-{day}-{title}.html'
+  blog.taglink = "tags/{tag}.html"
+  blog.layout = "article.cn"
   blog.summary_separator = /(READMORE)/
   blog.summary_length = 250
-  blog.year_link = ":year.html"
-  blog.month_link = ":year/:month.html"
-  blog.day_link = ":year/:month/:day.html"
+  blog.year_link = "{year}.html"
+  blog.month_link = "{year}/{month}.html"
+  blog.day_link = "{year}/{month}/{day}.html"
+  blog.paginate = true
+  blog.per_page = 10
+  blog.page_link = "p{num}"
   blog.default_extension = ".md"
-
   blog.tag_template = "/cn/tag.html"
   blog.calendar_template = "/cn/calendar.html"
-
-  blog.paginate = true
-  blog.per_page = 5
-  blog.page_link = "page/:num"
 end
 
 page "/cn/feed.xml", :layout => false
+
+# Main Lang
+
+proxy '/index.html', '/cn/index.html'
 
 ###
 # Compass
@@ -60,13 +62,20 @@ page "/cn/feed.xml", :layout => false
 ###
 
 # With no layout
+page 'robots.txt', layout: false
+page 'humans.txt', layout: false
 
+# Per-page layout changes:
+#
+# With no layout
+# page "/path/to/file.html", :layout => false
+#
 # With alternative layout
 # page "/path/to/file.html", :layout => :otherlayout
 #
 # A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
+# with_layout :en do
+#   page "/en/*"
 # end
 
 # Proxy (fake) files
@@ -77,8 +86,6 @@ page "/cn/feed.xml", :layout => false
 ###
 # Helpers
 ###
-require "extensions/links_helpers"
-helpers LinksHelpers
 
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
@@ -90,9 +97,9 @@ helpers LinksHelpers
 #   end
 # end
 
-# Generate sitemap after build
-activate :sitemap_generator
+helpers LinksHelpers
 
+### Assets PATH
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
@@ -103,39 +110,31 @@ set :images_dir, 'images'
 activate :syntax
 
 set :markdown_engine, :redcarpet
-set :markdown, :fenced_code_blocks => true, :smartypants => true
+set :markdown, fenced_code_blocks: true, smartypants: true, tables: true
 
-set :haml, { ugly: true }
+set :haml, ugly: true
 
-###
-# Deploy
-###
-activate :deploy do |deploy|
-  deploy.method   = :ftp
-  deploy.host     = "v0.ftp.upyun.com"
-  deploy.user     = 'cms-admin/dotide-blog'
-  deploy.password = ENV['password']
-  deploy.path     = "/"
-  deploy.build_before = true
-end
+# Livereload
+activate :livereload
 
 # Build-specific configuration
 configure :build do
 
+  # For example, change the Compass output style for deployment
   activate :minify_css
+
+  # Minify Javascript on build
   activate :minify_javascript
 
   # Enable cache buster
-  # activate :cache_buster
+  activate :asset_hash, ignore: [/^fonts/]
+
+  # Generate sitemap after build
+  activate :sitemap_generator
 
   # Use relative URLs
   # activate :relative_assets
 
-  # Compress PNGs after build
-  # First: gem install middleman-smusher
-  require "middleman-smusher"
-  activate :smusher
-
   # Or use a different image path
-  # set :http_path, "/Content/images/"
+  # set :http_prefix, "/Content/images/"
 end
