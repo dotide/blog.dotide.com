@@ -3,7 +3,7 @@ title: Dotide 主站的静态资源是如何加速的？
 date: 2013-09-22
 author: Hemslo Wang
 tags:
-- 技术tech
+- 技术
 ---
 
 Dotide的主站是用 Ruby on Rails 开发的，在对静态资源的处理中使用了[Asset Pipeline]，对多个 CSS 和 JavaScript 文件进行组合、压缩，从而大大减少了浏览器的并发连接数量与静态文件体积。

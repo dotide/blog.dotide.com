@@ -7,8 +7,8 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
 %head
   %meta{:charset => "utf-8"}/
-  %meta{:content => "", :name => "description"}/
-  %meta{:content => "", :name => "copyright"}/
+  %meta{:content => "Dotide 官方博客", :name => "description"}/
+  %meta{:content => "Freestorm", :name => "copyright"}/
   %link{:href => "/humans.txt", :rel => "author", :type => "text/plain"}/
   %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %meta{:content => "True", :name => "HandheldFriendly"}/
@@ -20,7 +20,7 @@
   - if content_for? :title
     %title= yield_content :title
   - else
-    %title= data.page.title || "Dotide官方博客"
+    %title= data.page.title || "Dotide 官方博客"
   = stylesheet_link_tag "application"
   = yield_content :stylesheets
   - if content_for? :styles
@@ -29,37 +29,78 @@
   = javascript_include_tag "modernizr"
   = yield_content :head
 %body
-  / Logo &amp; Top Nav
-  %nav.top-bar
-    %ul.title-area
-      %li.name
-        %h1
-          - link_to '/cn/' do
-            = image_tag('logo.png')
-            Dotide官方博客
-    %section.top-bar-section
-      %ul
-        %li.divider
-        %li= link_to '关于我们', '/cn/2013/08/25/aboutus.html'
-        %li.divider
-        %li= link_to '本站源代码', 'https://github.com/dotide/blog.dotide.com'
-      %ul.right
-        %li.divider
-        %li= link_to '返回Dotide', 'http://dotide.com/'
-
-  / Main page container
-  .row
-    .small-12.columns
+  .off-canvas-wrap
+    .inner-wrap
+      .row
+        %nav.top-bar.hide-for-small
+          %ul.title-area
+            %li.name
+              %h1
+                %a{href: '/'}
+                  %i{:"data-icon" => 'a'}
+          %section
+            %ul.left
+              %li
+                %a{:href => "/"}
+                  = "Dotide 官方博客"
+          %section.top-bar-section
+            %ul.right
+              %li
+                %a{href: 'https://dotide.com/about/'}= "关于我们"
+              %li
+                %a{href: 'http://developer.dotide.com'}= "开发者中心"
+              %li
+                %a{href: 'https://dotide.com'}= "回到Dotide"
+      %nav.tab-bar.show-for-small
+        %section.left-small
+          %a.left-off-canvas-toggle.menu-icon
+            %span
+        %section.middle.tab-bar-section
+          %h1.title= "Dotide 官方博客"
+        - if content_for? :second_nav
+          %section.right-small
+            %a.right-off-canvas-toggle.menu-icon
+              %span
+      %aside.left-off-canvas-menu.show-for-small
+        %ul.off-canvas-list
+          %li
+            %label= '目录'
+          %li
+            %a{href: '/'}= "首页"
+          %li
+            %a{href: 'https://dotide.com/about/'}= "关于我们"
+          %li
+            %a{href: 'http://developer.dotide.com'}= "开发者中心"
+          %li
+            %label= '站外链接'
+          %li
+            %a{href: 'https://github.com/dotide/blog.dotide.com'}= '本站源代码'
+          %li
+            %a{href: 'https://dotide.com'}= 'Dotide 主站'
+      %aside.right-off-canvas-menu.show-for-small
+        = yield_content :second_nav
+      %hr
+      / Main page container
       = yield
-  / Footer
-  %footer.footer.row
-    .small-12.large-6.columns
-      %p
-        \&copy; Copyright #{Date.today.year.to_s} Dotide官方博客
-    .small-12.large-6.columns
-      %p.right
-        %i.icon-heart
-        = link_to '托管于又拍云', 'https://www.upyun.com/?md=geakit'
+      / Footer
+      %footer.footer
+        .row
+          .small-12.large-push-8.large-4.columns
+            %ul.text-right
+              %li
+                = '站点托管在'
+                %a.reverse{href: 'https://www.upyun.com/?md=geakit'}= '又拍云'
+              %li
+                = '站点源代码托管在 '
+                %a.reverse{href: 'https://github.com/dotide/blog.dotide.com'}= 'GitHub'
+          .small-12.large-pull-4.large-8.columns
+            %ul.inline-list
+              %li
+                %a.reverse{href: 'https://dotide.com'}= "© #{Date.today.year} Dotide"
+              %li
+                %a.reverse{href: 'http://www.miibeian.gov.cn'}= '苏ICP备12071270号'
+      %a.exit-off-canvas
+
   /[if lt IE 9]
     #ie-warning-overlay
       #ie-warning
@@ -89,10 +130,7 @@
             %a{href: 'http://opera.com'}
               = image_tag 'browser_opera.png', :alt => "下载 Opera"
               %p Opera
-  :javascript
-    document.write('<script src=' +
-                   ('__proto__' in {} ? "#{asset_path :js, 'zepto'}" : "#{asset_path :js, 'jquery'}") +
-                   '><\/script>')
+
   / Javascript
   = javascript_include_tag "application"
   = yield_content :javascripts
@@ -101,10 +139,14 @@
       #{yield_content :onready}
       $(document).foundation();
     });
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-43357115-1', 'dotide.com');
-    ga('send', 'pageview');
+
+  - if build?
+    -# Google Analytics
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-43357115-1', 'dotide.com');
+      ga('send', 'pageview');
 </html>

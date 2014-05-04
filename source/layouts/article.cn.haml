@@ -1,2 +1,9 @@
 = wrap_layout :cn do
-  = partial '/cn/article', :locals => {:article => current_article, :digest => false}
+  .sub-nav-bar
+    .row
+      .large-7.columns
+        %h4
+          %a{href: '#'}= current_article.title
+  .row.main-content
+    .large-12.columns
+      = partial '/cn/article', :locals => {:article => current_article, :digest => false}

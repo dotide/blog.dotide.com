@@ -8,46 +8,43 @@ pageable: true
 - content_for :title do
   = "Dotide 官方博客"
 
-.articles.small-12.large-9.columns.left
-  - page_articles('cn').each_with_index do |article, i|
-    - if i > 0
+.sub-nav-bar
+  .row
+    .large-7.columns
+      %h4
+        %a{href: '#'}= '所有博客'
+.row.main-content
+  .large-3.large-push-9.small-12.columns
+    .right-content
+      %h3 所有标签
+      .tags
+        - blog('cn').tags.each do |tag, articles|
+          = link_to tag, tag_path(tag, 'cn'), :class => 'button secondary round extiny'
       %hr/
-    = partial '/cn/article', :locals => {:article => article, :digest => true}
-  = partial '/cn/pagination', :locals => { |
-      :paginate => paginate,               |
-      :next_page => next_page,             |
-      :prev_page => prev_page,             |
-      :num_pages => num_pages,             |
-      :page_number => page_number          |
-    }                                      |
-
-%aside.aside.small-12.large-3.columns.right
-  %h3 标签
-  %ul.tags
-    - blog('cn').tags.each do |tag, articles|
-      %li= link_to tag, tag_path(tag, 'cn'), :class => 'tiny button secondary round'
-  .divider
-  %ul.no-bullet.media
-    %li
-      = link_to '/cn/feed.xml' do
-        %i.icon-rss
-        = "订阅本博客"
-    %li
-      = link_to 'http://weibo.com/dotide' do
-        %i.icon-weibo
-        = "@Dotide"
-    %li
-      = link_to 'https://twitter.com/dotidehq' do
-        %i.icon-twitter-sign
-        = "@Dotidehq"
-    %li
-      = link_to 'https://www.facebook.com/dotidehq' do
-        %i.icon-facebook-sign
-        = "@Dotide"
-    %li
-      = link_to 'https://github.com/dotide' do
-        %i.icon-github
-        = "Dotide"
-    %li
-      = link_to 'http://weixin.qq.com/' do
-        = image_tag('qrcode_wx.jpg')
+      %ul.no-bullet.media
+        %li
+          = link_to '/cn/feed.xml' do
+            %i.fa.fa-rss
+          = link_to 'http://weibo.com/dotide' do
+            %i.fa.fa-weibo
+          = link_to 'https://twitter.com/dotidehq' do
+            %i.fa.fa-twitter
+          = link_to 'https://www.facebook.com/dotidehq' do
+            %i.fa.fa-facebook
+          = link_to 'https://github.com/dotide' do
+            %i.fa.fa-github
+        %li= image_tag('qrcode_wx.jpg')
+  .large-9.large-pull-3.small-12.columns
+    .right-content
+      - page_articles('cn').each_with_index do |article, i|
+        - if i > 0
+          %hr/
+        %h2= link_to article.title, article
+        = partial '/cn/article', :locals => {:article => article, :digest => true}
+      = partial '/cn/pagination', :locals => { |
+          :paginate => paginate,               |
+          :next_page => next_page,             |
+          :prev_page => prev_page,             |
+          :num_pages => num_pages,             |
+          :page_number => page_number          |
+        }                                      |

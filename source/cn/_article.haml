@@ -1,0 +1,39 @@
+.article-meta
+  %ul.no-bullet.credit
+    %li.date
+      %i.fa.fa-calendar
+      = date_links article.date, 'cn'
+    %li.author
+      %i.fa.fa-user
+      = article.data[:author]
+  .tags
+    - article.tags.each do |tag|
+      = link_to tag, tag_path(tag, 'cn'), :class => 'button secondary round extiny'
+.cell.markdown
+  - if digest
+    = article.summary
+  - else
+    = article.body
+
+- if digest && article.summary.length < article.body.length
+  %p.readmore
+    = link_to '阅读全文&rarr;', article.url, :class => 'button primary radius small'
+
+- unless digest
+  %hr/
+  %ul.no-bullet.article-links
+    %li
+      = article.previous_article ? link_to("<i class='icon-caret-left'></i> #{article.previous_article.title}", article.previous_article) : "&nbsp;"
+    %li
+      = article.next_article ? link_to("#{article.next_article.title} <i class='icon-caret-right'></i>", article.next_article) : "&nbsp;"
+  .ds-thread
+  :javascript
+    var duoshuoQuery = {short_name:"dotide"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = 'http://static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();

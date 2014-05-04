@@ -3,7 +3,7 @@ title: Jobs for Hackers
 date: 2013-09-05
 author: Michael Ding
 tags:
-- 工作jobs
+- 工作
 ---
 
 
@@ -13,4 +13,41 @@ tags:
 
 如果你也认同，那还犹豫什么？给我们发邮件吧:-D
 
-<script src="https://gist.github.com/yandy/6447170.js"></script>
+```ruby
+source 'http://dotide.com'
+
+ruby '2.0.0'
+
+group :backend do
+  gem 'rails', '4.0.0'
+  gem 'grape'
+  gem 'mongoid'
+  gem 'redis'
+end
+
+group :frontend do
+  gem 'haml'
+  gem 'coffee-rails'
+  gem 'sass-rails'
+  gem 'jquery-rails'
+  gem 'zurb-foundation'
+  gem 'rails-backbone'
+end
+
+group :test do
+  gem 'rspec'
+end
+
+group :bonus do
+  editor %w(Vim Emacs Sublime)
+  os %w(Linux Mac)
+  scm 'git'
+  security %w(Injection XSS CSRF)
+  ops
+  fuckgfw
+  account %w(GitHub StackOverflow SegmentFault)
+  blog
+end
+
+# mailto:jobs@dotide.com
+```

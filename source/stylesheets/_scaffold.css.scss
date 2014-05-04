@@ -1,0 +1,53 @@
+hr{
+  margin: 0;
+}
+.toc{
+  font-size: 14px;
+  li{
+    list-style-type: lower-roman;
+    a{
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.gray-bg{
+  padding: 10px 15px 5px 15px;
+  background-color: $gray-bg;
+}
+a{
+  color: $primary;
+  &:hover{
+    color: $primary-hover;
+    text-decoration: none;
+  }
+}
+a.reverse{
+  color: $primary-hover;
+  &:hover{
+    color: $primary;
+  }
+}
+.remove-border{
+  border: none !important;
+}
+
+.button.primary{
+  background-color: $primary;
+  color: white;
+  &:hover{
+    background-color: $primary-hover !important;
+  }
+}
+
+.button.extiny {
+  @include button-size($padding:$button-extny);
+}
+
+.media {
+  li:first-child {
+    padding-left: 10px;
+    font-size: 25px;
+  }
+}
